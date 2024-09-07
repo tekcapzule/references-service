@@ -39,7 +39,7 @@ jobs:
         run: mvn -B -U -s settings.xml verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=tekcapzule_references-service
 
   scan:
-    #needs: buildAndInspect
+    needs: buildAndInspect
     name: Scan Code
     runs-on: ubuntu-latest
     permissions:
