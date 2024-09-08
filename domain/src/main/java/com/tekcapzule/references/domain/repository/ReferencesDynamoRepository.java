@@ -12,6 +12,6 @@ public interface ReferencesDynamoRepository extends CrudRepository<References, S
     List<References> findByTopicCodes(List<String> subscribedTopics);
     List<References> findByTags(List<String> tags);
     List<References> findAllByDuration(String topicCode, String duration);
-    List<References> findAllByLevel(String topicCode, String courseLevel);
+    List<References> findAllByLevel(String topicCode, String level);
 
 }

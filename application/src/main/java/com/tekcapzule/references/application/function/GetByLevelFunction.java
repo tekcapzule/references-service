@@ -36,15 +36,15 @@ public class GetByLevelFunction implements Function<Message<GetByLevelInput>, Me
     public Message<List<References>> apply(Message<GetByLevelInput> getInputMessage) {
 
         Map<String, Object> responseHeaders = new HashMap<>();
-        List<References> courses = new ArrayList<>();
+        List<References> references = new ArrayList<>();
 
         String stage = appConfig.getStage().toUpperCase();
 
         try {
             GetByLevelInput getInput = getInputMessage.getPayload();
-            log.info(String.format("Entering get course by level Function -Topic Code:%s", getInput.getTopicCode()));
-            courses = referenceService.findAllByLevel(getInput.getTopicCode(), getInput.getLevel());
-            if (courses.isEmpty()) {
+            log.info(String.format("Entering get reference by level Function -Topic Code:%s", getInput.getTopicCode()));
+            references = referenceService.findAllByLevel(getInput.getTopicCode(), getInput.getLevel());
+            if (references.isEmpty()) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
             } else {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.SUCCESS);
@@ -53,6 +53,6 @@ public class GetByLevelFunction implements Function<Message<GetByLevelInput>, Me
             log.error(ex.getMessage());
             responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.ERROR);
         }
-        return new GenericMessage<>(courses, responseHeaders);
+        return new GenericMessage<>(references, responseHeaders);
     }
 }

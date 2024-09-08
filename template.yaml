@@ -28,7 +28,7 @@ Globals:
         TABLE: !Ref ReferencesTable
         APPLICATION_ENVIRONMENT: !Ref Stage
         CLOUD_REGION: us-east-1
-        MAIN_CLASS: com.tekcapzule.feed.application.ReferencesApplication
+        MAIN_CLASS: com.tekcapzule.references.application.ReferencesApplication
         JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
 
 Resources:
@@ -62,8 +62,6 @@ Resources:
           AttributeType: S
         - AttributeName: status
           AttributeType: S
-        - AttributeName: recommendations
-          AttributeType: N
         - AttributeName: level
           AttributeType: S
         - AttributeName: duration
@@ -208,10 +206,10 @@ Resources:
             RestApiId:
               Ref: ReferencesApi
 
-  RecommendCourseFunction:
+  RecommendReferenceFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Reference-RecommendCourse"
+      FunctionName: !Sub "${Stage}-Reference-RecommendReference"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -229,10 +227,10 @@ Resources:
             RestApiId:
               Ref: ReferencesApi
 
-  ApproveCourseFunction:
+  ApproveReferenceFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Reference-ApproveCourse"
+      FunctionName: !Sub "${Stage}-Reference-ApproveReference"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:
@@ -339,5 +337,5 @@ Resources:
 
 Outputs:
   ApiEndpoint:
-    Description: "Course API endpoint."
-    Value: !Sub "https://${ReferencesApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/course"
+    Description: "References API endpoint."
+    Value: !Sub "https://${ReferencesApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/references"

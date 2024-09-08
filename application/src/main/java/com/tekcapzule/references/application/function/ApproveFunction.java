@@ -28,8 +28,8 @@ public class ApproveFunction implements Function<Message<ApproveReferencesInput>
 
     private final AppConfig appConfig;
 
-    public ApproveFunction(final ReferenceService courseService, final AppConfig appConfig) {
-        this.referenceService = courseService;
+    public ApproveFunction(final ReferenceService referenceService, final AppConfig appConfig) {
+        this.referenceService = referenceService;
         this.appConfig = appConfig;
     }
 

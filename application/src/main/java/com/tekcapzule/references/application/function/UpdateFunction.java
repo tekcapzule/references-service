@@ -40,7 +40,7 @@ public class UpdateFunction implements Function<Message<UpdateInput>, Message<Vo
         String stage = appConfig.getStage().toUpperCase();
         try {
             UpdateInput updateInput = updateInputMessage.getPayload();
-            log.info(String.format("Entering update feed Function -  Reference Id:%s", updateInput.getReferenceId()));
+            log.info(String.format("Entering update reference Function -  Reference Id:%s", updateInput.getReferenceId()));
             Origin origin = HeaderUtil.buildOriginFromHeaders(updateInputMessage.getHeaders());
             UpdateCommand updateCommand = InputOutputMapper.buildUpdateCommandFromUpdateInput.apply(updateInput, origin);
             referenceService.update(updateCommand);

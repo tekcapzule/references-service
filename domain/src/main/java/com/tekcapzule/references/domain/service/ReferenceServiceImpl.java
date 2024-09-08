@@ -80,7 +80,7 @@ public class ReferenceServiceImpl implements ReferenceService {
 
     @Override
     public List<References> searchByTags(List<String> subscribedTopics) {
-        log.info("Entering getMyFeed service");
+        log.info("Entering getMyReference service");
 
         return referencesDynamoRepository.findByTags(subscribedTopics);
     }
@@ -88,7 +88,7 @@ public class ReferenceServiceImpl implements ReferenceService {
 
     @Override
     public void addBookMark(AddBookmarkCommand addBookmarkCommand) {
-        log.info(String.format("Entering addBookmark reference service -  Feed Id:%s", addBookmarkCommand.getReferenceId()));
+        log.info(String.format("Entering addBookmark reference service -  Reference Id:%s", addBookmarkCommand.getReferenceId()));
 
         References references = referencesDynamoRepository.findBy(addBookmarkCommand.getReferenceId());
 
@@ -123,11 +123,11 @@ public class ReferenceServiceImpl implements ReferenceService {
 
 
     @Override
-    public References findBy(String feedId) {
+    public References findBy(String referenceId) {
 
-        log.info(String.format("Entering find by feed service - Feed Id:%s", feedId));
+        log.info(String.format("Entering find by reference service - Reference Id:%s", referenceId));
 
-        return referencesDynamoRepository.findBy(feedId);
+        return referencesDynamoRepository.findBy(referenceId);
     }
 
     @Override
@@ -140,28 +140,28 @@ public class ReferenceServiceImpl implements ReferenceService {
     @Override
     public List<References> findAll() {
 
-        log.info("Entering findAll feed service");
+        log.info("Entering findAll Reference service");
 
         return referencesDynamoRepository.findAll();
     }
     @Override
     public List<References> findAllByDuration(String topicCode, String duration) {
 
-        log.info(String.format("Entering findAllByDuration Reference service - Module code:%s", topicCode));
+        log.info(String.format("Entering findAllByDuration Reference service -  code:%s", topicCode));
 
         return referencesDynamoRepository.findAllByDuration(topicCode, duration);
     }
     @Override
-    public List<References> findAllByLevel(String topicCode, String courseLevel) {
+    public List<References> findAllByLevel(String topicCode, String level) {
 
-        log.info(String.format("Entering findAllByLevel Reference service - Module code:%s", topicCode));
+        log.info(String.format("Entering findAllByLevel Reference service -  code:%s", topicCode));
 
-        return referencesDynamoRepository.findAllByLevel(topicCode, courseLevel);
+        return referencesDynamoRepository.findAllByLevel(topicCode, level);
     }
 
     @Override
     public void approve(ApproveCommand approveCommand) {
-        log.info(String.format("Entering approve course service -  reference Id:%s", approveCommand.getReferencesId()));
+        log.info(String.format("Entering approve reference service -  reference Id:%s", approveCommand.getReferencesId()));
 
         References references = referencesDynamoRepository.findBy(approveCommand.getReferencesId());
         if (references != null) {

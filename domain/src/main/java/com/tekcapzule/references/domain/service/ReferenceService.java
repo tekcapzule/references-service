@@ -19,13 +19,13 @@ public interface ReferenceService {
 
     void recommend(RecommendCommand recommendCommand);
 
-    References findBy(String feedId);
+    References findBy(String referenceId);
 
     List<References> findByTopics(List<String> topicNames);
 
     List<References> findAll();
     void approve(ApproveCommand approveCommand);
     List<References> findAllByDuration(String code, String duration);
-    List<References> findAllByLevel(String code, String courseLevel);
+    List<References> findAllByLevel(String code, String level);
 
 }

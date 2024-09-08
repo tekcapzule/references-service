@@ -36,15 +36,15 @@ public class GetByDurationFunction implements Function<Message<GetByDurationInpu
     public Message<List<References>> apply(Message<GetByDurationInput> getInputMessage) {
 
         Map<String, Object> responseHeaders = new HashMap<>();
-        List<References> courses = new ArrayList<>();
+        List<References> references = new ArrayList<>();
 
         String stage = appConfig.getStage().toUpperCase();
 
         try {
             GetByDurationInput getInput = getInputMessage.getPayload();
-            log.info(String.format("Entering get course by Duration Function -Duration :%s", getInput.getDuration()));
-            courses = referenceService.findAllByDuration(getInput.getTopicCode(), getInput.getDuration());
-            if (courses.isEmpty()) {
+            log.info(String.format("Entering get reference by Duration Function -Duration :%s", getInput.getDuration()));
+            references = referenceService.findAllByDuration(getInput.getTopicCode(), getInput.getDuration());
+            if (references.isEmpty()) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
             } else {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.SUCCESS);
@@ -53,6 +53,6 @@ public class GetByDurationFunction implements Function<Message<GetByDurationInpu
             log.error(ex.getMessage());
             responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.ERROR);
         }
-        return new GenericMessage<>(courses, responseHeaders);
+        return new GenericMessage<>(references, responseHeaders);
     }
 }

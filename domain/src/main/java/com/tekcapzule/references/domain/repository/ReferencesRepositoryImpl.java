@@ -36,8 +36,8 @@ public class ReferencesRepositoryImpl implements ReferencesDynamoRepository {
     }
 
     @Override
-    public References findBy(String feedId) {
-        return dynamo.load(References.class, feedId);
+    public References findBy(String referenceId) {
+        return dynamo.load(References.class, referenceId);
     }
 
     @Override
@@ -130,20 +130,20 @@ public class ReferencesRepositoryImpl implements ReferencesDynamoRepository {
         return dynamo.query(References.class, queryExpression);
     }
     @Override
-    public List<References> findAllByLevel(String topicCode, String courseLevel) {
+    public List<References> findAllByLevel(String topicCode, String level) {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
-        expAttributes.put(":courseLevel", new AttributeValue().withS(courseLevel));
+        expAttributes.put(":level", new AttributeValue().withS(level));
         expAttributes.put(":topicCode", new AttributeValue().withS(topicCode));
 
         HashMap<String, String> expNames = new HashMap<>();
-        expNames.put("#courseLevel", "courseLevel");
+        expNames.put("#level", "level");
         expNames.put("#topicCode", "topicCode");
 
 
         DynamoDBQueryExpression<References> queryExpression = new DynamoDBQueryExpression<References>()
                 .withIndexName("levelGSI").withConsistentRead(false)
-                .withKeyConditionExpression("#courseLevel = :courseLevel and #topicCode = :topicCode")
+                .withKeyConditionExpression("#level = :level and #topicCode = :topicCode")
                 .withExpressionAttributeValues(expAttributes)
                 .withExpressionAttributeNames(expNames);
 

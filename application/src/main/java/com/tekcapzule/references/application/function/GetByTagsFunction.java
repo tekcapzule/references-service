@@ -32,13 +32,13 @@ public class GetByTagsFunction implements Function<Message<GetByTagsInput>, Mess
     }
 
     @Override
-    public Message<List<References>> apply(Message<GetByTagsInput> getMyFeedInputMessage) {
+    public Message<List<References>> apply(Message<GetByTagsInput> getMyReferenceInputMessage) {
         Map<String, Object> responseHeaders = new HashMap<>();
         List<References> references = new ArrayList<>();
         String stage = appConfig.getStage().toUpperCase();
         try {
             log.info("Entering get references by tags Function");
-            references = referenceService.searchByTags(getMyFeedInputMessage.getPayload().getTags());
+            references = referenceService.searchByTags(getMyReferenceInputMessage.getPayload().getTags());
             responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.SUCCESS);
         } catch (Exception ex) {
             log.error(ex.getMessage());

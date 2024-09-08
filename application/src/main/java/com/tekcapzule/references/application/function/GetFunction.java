@@ -37,7 +37,7 @@ public class GetFunction implements Function<Message<GetInput>, Message<Referenc
         String stage = appConfig.getStage().toUpperCase();
         try {
             GetInput getInput = getInputMessage.getPayload();
-            log.info(String.format("Entering get reference Function - Feed Id:%s", getInput.getReferenceId()));
+            log.info(String.format("Entering get reference Function - Reference Id:%s", getInput.getReferenceId()));
             references = referenceService.findBy(getInput.getReferenceId());
             if (references == null) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);
