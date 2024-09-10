@@ -12,5 +12,5 @@ import lombok.EqualsAndHashCode;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class ApproveCommand extends Command {
-    private String referencesId;
+    private String referenceId;
 }

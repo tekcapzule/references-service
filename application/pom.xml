@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tekcapzule</groupId>
     <artifactId>references-service</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>References Service</name>
     <description>References Service</description>
     <properties>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>com.tekcapzule</groupId>
             <artifactId>references-domain</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

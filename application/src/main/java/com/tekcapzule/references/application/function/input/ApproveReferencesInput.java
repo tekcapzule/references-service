@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
 public class ApproveReferencesInput {
-    private String referencesId;
+    private String referenceId;
 }

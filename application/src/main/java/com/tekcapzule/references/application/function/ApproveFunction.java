@@ -40,7 +40,7 @@ public class ApproveFunction implements Function<Message<ApproveReferencesInput>
         String stage = appConfig.getStage().toUpperCase();
         try {
             ApproveReferencesInput approveReferencesInput = approveReferencesInputMessage.getPayload();
-            log.info(String.format("Entering approve references Function -  reference Id:%s", approveReferencesInput.getReferencesId()));
+            log.info(String.format("Entering approve references Function -  reference Id:%s", approveReferencesInput.getReferenceId()));
             Origin origin = HeaderUtil.buildOriginFromHeaders(approveReferencesInputMessage.getHeaders());
             ApproveCommand approveCommand = InputOutputMapper.buildApproveCommandFromApproveReferencesInput.apply(approveReferencesInput, origin);
             referenceService.approve(approveCommand);

@@ -56,7 +56,7 @@ Resources:
     Properties:
       TableName: !Sub "${Stage}References"
       AttributeDefinitions:
-        - AttributeName: referencesId
+        - AttributeName: referenceId
           AttributeType: S
         - AttributeName: topicCode
           AttributeType: S
@@ -69,7 +69,7 @@ Resources:
         - AttributeName: tags
           AttributeType: S
       KeySchema:
-        - AttributeName: referencesId
+        - AttributeName: referenceId
           KeyType: HASH
       ProvisionedThroughput:
         ReadCapacityUnits: 1

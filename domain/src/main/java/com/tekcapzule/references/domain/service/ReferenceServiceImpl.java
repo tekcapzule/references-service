@@ -161,9 +161,9 @@ public class ReferenceServiceImpl implements ReferenceService {
 
     @Override
     public void approve(ApproveCommand approveCommand) {
-        log.info(String.format("Entering approve reference service -  reference Id:%s", approveCommand.getReferencesId()));
+        log.info(String.format("Entering approve reference service -  reference Id:%s", approveCommand.getReferenceId()));
 
-        References references = referencesDynamoRepository.findBy(approveCommand.getReferencesId());
+        References references = referencesDynamoRepository.findBy(approveCommand.getReferenceId());
         if (references != null) {
             references.setStatus(Status.ACTIVE);
 
