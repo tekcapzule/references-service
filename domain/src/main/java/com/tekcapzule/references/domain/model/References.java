@@ -50,7 +50,7 @@ public class References extends BaseDomainEntity implements AggregateRoot {
     @DynamoDBAttribute(attributeName = "duration")
     private Integer duration;
     @DynamoDBAttribute(attributeName="tags")
-    private List<String> tags;
+    private String tags;
     @DynamoDBAttribute(attributeName = "bookmarks")
     private Integer bookmarks;
     @DynamoDBAttribute(attributeName = "recommendations")

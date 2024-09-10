@@ -19,7 +19,7 @@ public class UpdateInput {
     private Integer duration;
     private String author;
     private String description;
-    private List<String> tags;
+    private String tags;
     private String publisher;
     private String publishedOn;
     private String resourceUrl;
