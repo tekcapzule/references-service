@@ -65,7 +65,7 @@ Resources:
         - AttributeName: level
           AttributeType: S
         - AttributeName: duration
-          AttributeType: S
+          AttributeType: N
         - AttributeName: tags
           AttributeType: S
       KeySchema:
