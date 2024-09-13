@@ -96,7 +96,7 @@ public class ReferencesRepositoryImpl implements ReferencesDynamoRepository {
             expNames.put("#tags", "tags");
 
             DynamoDBQueryExpression<References> queryExpression = new DynamoDBQueryExpression<References>()
-                    .withIndexName("topicGSI").withConsistentRead(false)
+                    .withIndexName("tagGSI").withConsistentRead(false)
                     .withKeyConditionExpression("#status = :status and #tags = :tags")
                     .withExpressionAttributeValues(expAttributes)
                     .withExpressionAttributeNames(expNames);
