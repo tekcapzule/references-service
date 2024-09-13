@@ -227,6 +227,27 @@ Resources:
             RestApiId:
               Ref: ReferencesApi
 
+  BookmarkReferenceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-Reference-BookmarkReference"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ReferencesTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: bookmarkFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: reference/bookmark
+            Method: post
+            RestApiId:
+              Ref: ReferencesApi
+
   ApproveReferenceFunction:
     Type: AWS::Serverless::Function
     Properties:
