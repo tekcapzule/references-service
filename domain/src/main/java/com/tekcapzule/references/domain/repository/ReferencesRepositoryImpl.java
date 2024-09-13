@@ -114,7 +114,7 @@ public class ReferencesRepositoryImpl implements ReferencesDynamoRepository {
 
         HashMap<String, AttributeValue> expAttributes = new HashMap<>();
         expAttributes.put(":topicCode", new AttributeValue().withS(topicCode));
-        expAttributes.put(":duration", new AttributeValue().withS(duration));
+        expAttributes.put(":duration", new AttributeValue().withN(duration));
 
         HashMap<String, String> expNames = new HashMap<>();
         expNames.put("#duration", "duration");
